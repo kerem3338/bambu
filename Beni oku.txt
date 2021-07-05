@@ -1,3 +1,9 @@
 Bambu Engine 3.0
 Bambu Oyun Motoru, Kerem Ata Tarafından yazılmıştır
 ---------------------------------------------------
+
+yapabildiği işlemler:
+bir tuşa basıldığnda işlem yapma
+ses oynatma
+yeni pencere açma
+pencere başlığı ekleme
