@@ -1,4 +1,4 @@
-#Bambu Engine 3.0.1 By Zoda
+#Bambu Engine 3.2 By Zoda
 import os
 
 #Pygame welcome message hide
