@@ -1,4 +1,4 @@
-#Bambu Engine by Zoda
+#Bambu Engine 3.0.1 By Zoda
 import os
 
 #Pygame welcome message hide
@@ -10,10 +10,11 @@ import time
 import keyboard
 import engine_config
 
+
+
 if sys.version_info < (3, 8):
     print("Lütfen Python Sürümünüzü 3.8 yada yüksek bir sürüme yükseltin yoksa bazı hatalar ile karşılaşabilirsiniz")
 class bambu:
-    
     def __init__(self):
         #Engine Configuretion
         pygame.init()
@@ -27,20 +28,21 @@ class bambu:
         self.ekran = None
         self.engine_running = False
         
+        self.engine_path = os.getcwd()
 
-
-        self.ses = None
+        self.ses_durum = None
         self.pause = False
-        self.ses_düzeyi = 1.0
+        
 
-        #Note: welcome message will be added in next version
+        #Welcome text
         print(self.welcome_text)
         
     #Engine version
     def ver(self):
-        print(self.version)
+        return self.version
 
-    # 
+
+    #Start engine window 
     def engine_init(self, width=int, height=int): #width=genişlik height=yükseklik
         self.engine_running = self.engine_running = True
         
@@ -55,12 +57,20 @@ class bambu:
             self.ekran = pygame.display.set_mode(a)
         except TypeError:
             print("(engine_init) TypeEror: String  kabul edilmiyor (Sadece İntiger Kabul ediliyor)")
-        
-            
+            bambu.ekran = self.ekran
     
         
-    #---ses/müzik---#
-    def music_play(self, sound, repeat=False):
+    #motor için dosya Yolu yapılandırması
+    def set_engine_path(self, path):
+        os.chdir(path)
+        self.engine_path = self.engine_path = path
+
+    #return engine path
+    def get_engine_path(self):
+        return self.engine_path
+
+    #---sound---#
+    def music_play(self, sound, repeat=False, play_time=None):
         pygame.mixer.init()
         if not repeat:
             self.ses_durum = self.ses_durum = True
@@ -90,11 +100,13 @@ class bambu:
     def music_unpause(self):
         self.pause = self.pause = False
         pygame.mixer.music.unpause()
-    #---ses/müzik---#
+    #---sound---#
 
+   #update screen
     def screen_update(self):
         pygame.display.update()
 
+    
 
     #Set background color with color list
     def background_color(self, color):
@@ -108,6 +120,7 @@ class bambu:
             "black": (0, 0, 0),
             "gold": (255,215,0),
             "yellow": (255,255,0),
+            "slate gray": (112,128,144)
             
         }
         if color in color_list:
@@ -135,11 +148,17 @@ class bambu:
     def set_title(self, baslik=str):
         self.baslik = baslik
         pygame.display.set_caption(self.baslik)
-        
+    
+    def take_screenshoot(self, filename):
+        example = pygame.Surface((self.boyutlar[0], self.boyutlar[1]))
+        pygame.image.save(example, filename)
     def set_window_size(self, width=int, height=int):
         self.boyutlar = self.boyutlar = width, height
         a = (self.boyutlar[0], self.boyutlar[1])
-        
+        self.ekran = self.ekran = pygame.display.set_mode(a)
+        pygame.display.update()
+    
+
     def load_icon(self, icon):
         self.icon = icon
         pygame.display.update()
@@ -150,8 +169,24 @@ class bambu:
             pygame.quit()
         elif not self.engine_running:
             print("(engine_stop): Zaten Motor Kapatılmış")
-   
+
+
+    #pygame.event
+    def loop(self):
+        while True:
+            try:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+            except pygame.error:
+                pass
+    
+
+    
+
+    
+
 
 #5/7/2021 - başlangıç
-#21/7/2021 - geliştirme
+#4/8/2021 - geliştirme
 #0/0/0000 - bitiş
