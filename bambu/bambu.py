@@ -150,8 +150,8 @@ class bambu:
         pygame.display.set_caption(self.baslik)
     
     def take_screenshoot(self, filename):
-        example = pygame.Surface((self.boyutlar[0], self.boyutlar[1]))
-        pygame.image.save(example, filename)
+        screen = pygame.Surface((self.boyutlar[0], self.boyutlar[1]))
+        pygame.image.save(screen, filename)
     def set_window_size(self, width=int, height=int):
         self.boyutlar = self.boyutlar = width, height
         a = (self.boyutlar[0], self.boyutlar[1])
