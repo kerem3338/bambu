@@ -9,8 +9,8 @@ import sys
 import time
 import keyboard
 import engine_config
-
-
+import colors
+import window
 
 if sys.version_info < (3, 8):
     print("Lütfen Python Sürümünüzü 3.8 yada yüksek bir sürüme yükseltin yoksa bazı hatalar ile karşılaşabilirsiniz")
@@ -18,6 +18,7 @@ class bambu:
     def __init__(self):
         #Engine Configuretion
         pygame.init()
+        self.window = window.Window()
         self.welcome_text = engine_config.welcome
         self.icon = engine_config.engine_icon
         self.version = engine_config.engine_version
@@ -102,27 +103,22 @@ class bambu:
         pygame.mixer.music.unpause()
     #---sound---#
 
-   #update screen
+    #update screen
     def screen_update(self):
         pygame.display.update()
 
     
-
+    def draw_circle(self, color, x, y, size):
+        if color in colors.color_list:
+            colors.color_list[color]
+            pygame.draw.circle(self.ekran, (color),(x, y), size)
+            pygame.display.update()
+        else:
+            print(f"draw_circle: {color} bulunamadı")
+    
     #Set background color with color list
     def background_color(self, color):
-        color_list = {
-            "red": (255, 0, 0),
-            "blue": (0, 0, 255),
-            "green": (0, 255, 0),
-            "orange": (255, 165, 0),
-            "light silver": (192, 192, 192),
-            "light gray": (211,211,211),
-            "black": (0, 0, 0),
-            "gold": (255,215,0),
-            "yellow": (255,255,0),
-            "slate gray": (112,128,144)
-            
-        }
+        color_list = colors.color_list
         if color in color_list:
             try:
                 self.ekran.fill(color_list[color])
@@ -145,13 +141,18 @@ class bambu:
         except AttributeError:
             print("(background_color) AttributeError: Engine_init başlatma hatası")
 
+    def alert(self, message, title="Bambu Engine"):
+        self.window.alert(message, title)
+
     def set_title(self, baslik=str):
         self.baslik = baslik
         pygame.display.set_caption(self.baslik)
+
     
     def take_screenshoot(self, filename):
         screen = pygame.Surface((self.boyutlar[0], self.boyutlar[1]))
         pygame.image.save(screen, filename)
+
     def set_window_size(self, width=int, height=int):
         self.boyutlar = self.boyutlar = width, height
         a = (self.boyutlar[0], self.boyutlar[1])
@@ -168,7 +169,7 @@ class bambu:
             self.engine_running = False
             pygame.quit()
         elif not self.engine_running:
-            print("(engine_stop): Zaten Motor Kapatılmış")
+            print("(engine_stop): ,Motor Zaten Kapalı Durumda")
 
 
     #pygame.event
@@ -185,7 +186,6 @@ class bambu:
     
 
     
-
 
 #5/7/2021 - başlangıç
 #4/8/2021 - geliştirme
