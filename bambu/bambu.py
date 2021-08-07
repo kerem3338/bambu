@@ -169,7 +169,7 @@ class bambu:
             self.engine_running = False
             pygame.quit()
         elif not self.engine_running:
-            print("(engine_stop): ,Motor Zaten Kapalı Durumda")
+            print("(engine_stop): Motor Zaten Kapalı Durumda")
 
 
     #pygame.event
