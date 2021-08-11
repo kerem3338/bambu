@@ -181,6 +181,8 @@ class bambu:
                         pygame.quit()
             except pygame.error:
                 pass
+            except:
+                exit()
     
 
     
@@ -188,5 +190,5 @@ class bambu:
     
 
 #5/7/2021 - başlangıç
-#4/8/2021 - geliştirme
+#11/8/2021 - geliştirme
 #0/0/0000 - bitiş
