@@ -5,6 +5,14 @@ Bambu Nedir?
 Bambu açık kaynaklı bir python oyun motorudur. onunla basit bir şekilde oyunlar yapabilir, yerel ağda sunucular kurup arkadaşlarınız ile oynayabilirsiniz
 öğrenilmesi kolay bir motordur.
 
+**Gerksinimler**
+python 3.8+
+pygame
+pywin32
+
+**gereksinimlerin kurulumu**
+pip install -r requiments.txt
+
 **Not**
 3.3.1: ctrl+c bug ı düzeltildi
 3.3.1: Artık pencere kapatılınca kodda kapanacak (loop() ile)
