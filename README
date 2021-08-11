@@ -7,6 +7,7 @@ Bambu açık kaynaklı bir python oyun motorudur. onunla basit bir şekilde oyun
 
 **Not**
 3.2.1: ctrl+c bug ı düzeltildi
+3.2.: Artık pencere kapatılınca kodda kapanacak (loop() ile)
 
 **Destek**
 Eğer bambu'ya destek vermek istiyorsanız zoda@vuhuv.com adresine e-posta atın veya bu repository'nin 'İssues' bölümüne Düşüncelerinizi yazın.
