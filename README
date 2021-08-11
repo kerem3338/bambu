@@ -11,7 +11,7 @@ pygame
 pywin32
 
 **gereksinimlerin kurulumu**
-pip install -r requiments.txt
+pip install -r requirements.txt
 
 **Not**
 3.3.1: ctrl+c bug ı düzeltildi
