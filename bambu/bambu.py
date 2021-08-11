@@ -48,7 +48,7 @@ class bambu:
         self.engine_running = self.engine_running = True
         
         pygame.display.set_caption(self.baslik)
-        icon = pygame.image.load(self.icon)
+        icon = pygame.image.load(os.path.join(self.icon))
         
         pygame.display.set_icon(icon)
         self.boyutlar = width, height
