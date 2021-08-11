@@ -58,7 +58,7 @@ class bambu:
             self.ekran = pygame.display.set_mode(a)
         except TypeError:
             print("(engine_init) TypeEror: String  kabul edilmiyor (Sadece İntiger Kabul ediliyor)")
-            bambu.ekran = self.ekran
+            
     
         
     #motor için dosya Yolu yapılandırması
