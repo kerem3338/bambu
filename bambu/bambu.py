@@ -1,30 +1,37 @@
-#Bambu Engine 3.2 By Zoda
+#Bambu Engine By Zoda
 import os
+import sys
 
 #Pygame welcome message hide
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
 
 import pygame
-import sys
 import time
 import keyboard
 import engine_config
 import colors
 import window
+import ui
+import network
+
+
 
 if sys.version_info < (3, 8):
-    print("Lütfen Python Sürümünüzü 3.8 yada yüksek bir sürüme yükseltin yoksa bazı hatalar ile karşılaşabilirsiniz")
+    print("Bambu, python un 3.8 veya daha yüksek bir sürümün kullanımı için hazırlandı devam etmeniz halinde bazı sorunlar ile karşılaşabilirsiniz")
+
 class bambu:
     def __init__(self):
         #Engine Configuretion
         pygame.init()
+        self.network = network.Network()
+        self.ui = ui.Ui()
         self.window = window.Window()
         self.welcome_text = engine_config.welcome
         self.icon = engine_config.engine_icon
         self.version = engine_config.engine_version
 
         
-        self.baslik = "Bambu Engine"
+        self.baslik = engine_config.normal_title
         self.boyutlar = None, None
         self.ekran = None
         self.engine_running = False
@@ -42,9 +49,9 @@ class bambu:
     def ver(self):
         return self.version
 
-
+    
     #Start engine window 
-    def engine_init(self, width=int, height=int): #width=genişlik height=yükseklik
+    def engine_init(self, width=500, height=500): #width=genişlik height=yükseklik
         self.engine_running = self.engine_running = True
         
         pygame.display.set_caption(self.baslik)
@@ -58,9 +65,20 @@ class bambu:
             self.ekran = pygame.display.set_mode(a)
         except TypeError:
             print("(engine_init) TypeEror: String  kabul edilmiyor (Sadece İntiger Kabul ediliyor)")
-            
+
+
+
+    def get_screen_size(self):
+        if self.boyutlar[0] == None and self.boyutlar[1] == None:
+            print("Engine not inited")
+        else:
+            return self.boyutlar[0], self.boyutlar[1]
     
-        
+    def hide_console(self):
+        self.window.hide_console()
+
+    
+    
     #motor için dosya Yolu yapılandırması
     def set_engine_path(self, path):
         os.chdir(path)
@@ -70,6 +88,7 @@ class bambu:
     def get_engine_path(self):
         return self.engine_path
 
+    
     #---sound---#
     def music_play(self, sound, repeat=False, play_time=None):
         pygame.mixer.init()
@@ -90,10 +109,15 @@ class bambu:
                 print("(play) Pygame.error: Ses Dosyası bulunduğunuz dosya konumunda bulunamadı")
                 
     def music_stop(self):
-        if self.ses_durum.isdigit() == "True":
+        if self.ses_durum == True:
             pygame.mixer.music.stop() 
             self.ses_durum = self.ses_durum = False
-            
+        else:
+            print("(music_stop): Ses dosyası zaten durdurulmuş")
+
+    
+    
+        
     def music_pause(self):
         self.pause = self.pause = True
         pygame.mixer.music.pause()
@@ -102,20 +126,31 @@ class bambu:
         self.pause = self.pause = False
         pygame.mixer.music.unpause()
     #---sound---#
-
-    #update screen
+    
+    #--Network--#
+    def internet_required(self, error=None):
+        if error is None:
+            self.network.internet_required()
+        else:
+            self.network.internet_required(error)
+    #--Network--#
+    
+    #---ui---#
+    def load_image(self, image, x, y):
+        self.ui.load_image(self.ekran, image, x, y)
+        
     def screen_update(self):
         pygame.display.update()
 
-    
+    def clear_screen(self):
+        self.ui.clear_screen(self.ekran)
+        
     def draw_circle(self, color, x, y, size):
-        if color in colors.color_list:
-            colors.color_list[color]
-            pygame.draw.circle(self.ekran, (color),(x, y), size)
-            pygame.display.update()
-        else:
-            print(f"draw_circle: {color} bulunamadı")
-    
+        self.ui.draw_circle(self.ekran, color, x, y, size)
+    #---ui---#
+
+
+        
     #Set background color with color list
     def background_color(self, color):
         color_list = colors.color_list
@@ -140,6 +175,7 @@ class bambu:
             print("(background_color) ValueError: Geçersiz renk ergümanı")
         except AttributeError:
             print("(background_color) AttributeError: Engine_init başlatma hatası")
+        
 
     def alert(self, message, title="Bambu Engine"):
         self.window.alert(message, title)
@@ -159,7 +195,6 @@ class bambu:
         self.ekran = self.ekran = pygame.display.set_mode(a)
         pygame.display.update()
     
-
     def load_icon(self, icon):
         self.icon = icon
         pygame.display.update()
@@ -179,7 +214,6 @@ class bambu:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         pygame.quit()
-                        exit()
             except pygame.error:
                 pass
             except:
@@ -188,8 +222,6 @@ class bambu:
 
     
 
-    
-
 #5/7/2021 - başlangıç
-#11/8/2021 - geliştirme
+#14/8/2021 - geliştirme
 #0/0/0000 - bitiş
