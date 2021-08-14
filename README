@@ -13,7 +13,7 @@ pywin32
 **gereksinimlerin kurulumu**
 pip install -r requirements.txt
 
---------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 
 **Destek**
 Eğer bambu'ya destek vermek istiyorsanız zoda@vuhuv.com adresine e-posta atın veya bu repository'nin 'İssues' bölümüne Düşüncelerinizi yazın.
