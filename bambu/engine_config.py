@@ -3,8 +3,13 @@
 #bu dosyayı düzenleme!
 
 import os
-engine_version = 3.0
+import pygame
+
+pygame_version = pygame.__version__
+engine_version = 3.4.1
+
+normal_title = "Bambu Engine"
 engine_icon = os.getcwd() + "\icon.png"
 welcome = """
-Bambu Engine 3.2.1
+Bambu Engine 3.4.1 (Test Sürümü)
 """
