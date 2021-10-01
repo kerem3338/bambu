@@ -12,10 +12,12 @@ class Window:
         
 
     def alert(self, message, title):
+        """Pop-up screen message""""
         pymsgbox.alert(message, title)
 
     
     def hide_console(self):
+        
         #Uyarı hide console sadece kodu çalıştıran uygulamayı gizler
         #yani vs code veya farklı bir ide den kodu çalıştırsanız ide penceresini gizler ama ide hala çalışır vaziyettedir
         hide = win32gui.GetForegroundWindow()
