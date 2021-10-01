@@ -4,6 +4,7 @@ try:
     import win32gui, win32con
 except:
     print("Lütfen pywin32 paketini kurun (kurulu olmadan da motor çalışır ama hide_console() ögesini kullanmazsınız!")
+    print("Kısıtlı Mod başlatıldı")
 
 class Window:
     def __init__(self):
