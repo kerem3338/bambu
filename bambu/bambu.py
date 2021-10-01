@@ -52,6 +52,7 @@ class bambu:
     
     #Start engine window 
     def engine_init(self, width=500, height=500): #width=genişlik height=yükseklik
+        """init engine and activate ui commands"""
         self.engine_running = self.engine_running = True
         
         pygame.display.set_caption(self.baslik)
@@ -69,6 +70,7 @@ class bambu:
 
 
     def get_screen_size(self):
+        """return screen size"""
         if self.boyutlar[0] == None and self.boyutlar[1] == None:
             print("Engine not inited")
         else:
@@ -81,16 +83,19 @@ class bambu:
     
     #motor için dosya Yolu yapılandırması
     def set_engine_path(self, path):
+        """Change current path"""
         os.chdir(path)
         self.engine_path = self.engine_path = path
 
     #return engine path
     def get_engine_path(self):
+        """Return engine path"""
         return self.engine_path
 
     
     #---sound---#
     def music_play(self, sound, repeat=False, play_time=None):
+        """Play music file"""
         pygame.mixer.init()
         if not repeat:
             self.ses_durum = self.ses_durum = True
@@ -109,6 +114,7 @@ class bambu:
                 print("(play) Pygame.error: Ses Dosyası bulunduğunuz dosya konumunda bulunamadı")
                 
     def music_stop(self):
+        """Stop music file"""
         if self.ses_durum == True:
             pygame.mixer.music.stop() 
             self.ses_durum = self.ses_durum = False
@@ -119,10 +125,12 @@ class bambu:
     
         
     def music_pause(self):
+        """Pause music"""
         self.pause = self.pause = True
         pygame.mixer.music.pause()
         
     def music_unpause(self):
+        """Un pause music"""
         self.pause = self.pause = False
         pygame.mixer.music.unpause()
     #---sound---#
