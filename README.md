@@ -2,27 +2,27 @@ Bambu Oyun Motoru
 
 
 Bambu Nedir?
-Bambu açık kaynaklı bir python oyun motorudur. onunla basit bir şekilde oyunlar yapabilir, yerel ağda sunucular kurup arkadaşlarınız ile oynayabilirsiniz
-öğrenilmesi kolay bir motordur.
+Bambu açık kaynaklı bir python oyun motorudur. onunla basit bir şekilde oyunlar yapabilir, yerel ağda sunucular kurup arkadaşlarınız ile oynayabilirsiniz<br>
+öğrenilmesi kolay bir motordur.<br>
 
-**Modlar**
-kısıtlı mod: sadece pygame kütüphanesi gereklidir
-**Gereksinimler**
-python 3.8+
-pygame
-pywin32
+**Modlar**<br>
+kısıtlı mod: sadece pygame kütüphanesi gereklidir<br>
+**Gereksinimler**<br>
+python 3.8+<br>
+pygame<br>
+pywin32<br>
 
-**gereksinimlerin kurulumu**
-pip install -r requirements.txt
+**gereksinimlerin kurulumu**<br>
+pip install -r requirements.txt<br>
 
-----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------<br>
 
-**Destek**
-Eğer bambu'ya destek vermek istiyorsanız zoda@vuhuv.com adresine e-posta atın veya bu repository'nin 'İssues' bölümüne Düşüncelerinizi yazın.
-**Destekleriniz gerçekten değerli**
+**Destek**<br>
+Eğer bambu'ya destek vermek istiyorsanız zoda@vuhuv.com adresine e-posta atın veya bu repository'nin 'İssues' bölümüne Düşüncelerinizi yazın.<br>
+**Destekleriniz gerçekten değerli**<br>
 
-**Dökümantasyon**
-Dökümantasyon: https://bambu-engine.glitch.me/doc
+**Dökümantasyon**<br>
+Dökümantasyon: https://bambu-engine.glitch.me/doc<br>
 
-discord: discord.gg/ZyfNFEz36X, Zoda#5813
-- Dios Team
+discord: discord.gg/ZyfNFEz36X, Zoda#5813<br>
+- Dios Team<br>
