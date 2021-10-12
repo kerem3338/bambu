@@ -1,10 +1,10 @@
 import pygame
-import colors
+import bambu.colors
 
 class Ui:
     def __init__(self):
         pygame.init()
-        self.col = colors.color_list
+        self.col = bambu.colors.color_list
         
     
     def load_image(self, screen, image, x, y):

@@ -6,10 +6,10 @@ import os
 import pygame
 
 pygame_version = pygame.__version__
-engine_version = 3.4.1
+engine_version = "3.5"
 
 normal_title = "Bambu Engine"
-engine_icon = os.getcwd() + "\icon.png"
-welcome = """
-Bambu Engine 3.4.1 (Test Sürümü)
+#engine_icon = os.getcwd() + "\icon.png"
+welcome = f"""
+Bambu Engine {engine_version}
 """
